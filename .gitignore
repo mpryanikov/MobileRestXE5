@@ -1,0 +1,3 @@
+*.dproj.local
+/Win32/
+*.res
