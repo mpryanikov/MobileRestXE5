@@ -1,0 +1,253 @@
+object TabbedForm: TTabbedForm
+  Left = 0
+  Top = 0
+  Caption = 'TabbedForm'
+  ClientHeight = 567
+  ClientWidth = 384
+  FormFactor.Width = 1440
+  FormFactor.Height = 900
+  FormFactor.Devices = [dkDesktop]
+  OnCreate = FormCreate
+  DesignerMobile = True
+  DesignerWidth = 384
+  DesignerHeight = 592
+  DesignerDeviceName = 'Google Nexus 4'
+  DesignerOrientation = 0
+  DesignerOSVersion = ''
+  object HeaderToolBar: TToolBar
+    Anchors = []
+    Height = 48.000000000000000000
+    TabOrder = 0
+    Width = 384.000000000000000000
+    object ToolBarLabel: TLabel
+      Align = alContents
+      Height = 48.000000000000000000
+      StyleLookup = 'toollabel'
+      Text = 'Mobile REST Client '
+      TextAlign = taCenter
+      Width = 384.000000000000000000
+    end
+  end
+  object TabControl1: TTabControl
+    Align = alClient
+    FullSize = True
+    Height = 519.000000000000000000
+    TabHeight = 49.000000000000000000
+    TabIndex = 0
+    TabOrder = 1
+    TabPosition = tpBottom
+    Width = 384.000000000000000000
+    object TabItem1: TTabItem
+      WordWrap = False
+      Height = 49.000000000000000000
+      IsSelected = True
+      StyleLookup = 'tabitemdownloads'
+      TabOrder = 0
+      Text = 'Request'
+      Width = 96.000000000000000000
+      object Edit1: TEdit
+        Touch.InteractiveGestures = [igLongTap, igDoubleTap]
+        Anchors = [akLeft, akTop, akRight]
+        TabOrder = 0
+        Text = 'http://services.odata.org/Northwind/Northwind.svc/Customers'
+        Position.X = 8.000000000000000000
+        Position.Y = 48.000000000000000000
+        Width = 369.000000000000000000
+        Height = 32.000000000000000000
+        KillFocusByReturn = False
+      end
+      object Label1: TLabel
+        Anchors = [akLeft, akTop, akRight]
+        Height = 26.000000000000000000
+        Position.X = 8.000000000000000000
+        Position.Y = 8.000000000000000000
+        Text = 'Request'
+        Width = 369.000000000000000000
+        WordWrap = False
+        Trimming = ttCharacter
+      end
+      object Button1: TButton
+        Anchors = [akTop]
+        Height = 44.000000000000000000
+        Position.X = 149.000000000000000000
+        Position.Y = 168.000000000000000000
+        TabOrder = 2
+        Text = 'Get'
+        Trimming = ttCharacter
+        Width = 85.000000000000000000
+        OnClick = Button1Click
+      end
+      object Edit2: TEdit
+        Touch.InteractiveGestures = [igLongTap, igDoubleTap]
+        Anchors = [akLeft, akTop, akRight]
+        TabOrder = 3
+        Position.X = 8.000000000000000000
+        Position.Y = 120.000000000000000000
+        Width = 369.000000000000000000
+        Height = 32.000000000000000000
+        KillFocusByReturn = False
+      end
+      object Label2: TLabel
+        Height = 23.000000000000000000
+        Position.X = 8.000000000000000000
+        Position.Y = 96.000000000000000000
+        Text = 'Root Element:'
+        Width = 161.000000000000000000
+        Trimming = ttCharacter
+      end
+    end
+    object TabItem2: TTabItem
+      WordWrap = False
+      Height = 49.000000000000000000
+      IsSelected = False
+      Position.X = 96.000000000000000000
+      StyleLookup = 'tabitemcontacts'
+      TabOrder = 1
+      Text = 'Json'
+      Width = 96.000000000000000000
+      object Memo1: TMemo
+        Touch.InteractiveGestures = [igPan, igLongTap, igDoubleTap]
+        Align = alClient
+        Height = 470.000000000000000000
+        TabOrder = 0
+        Width = 384.000000000000000000
+      end
+    end
+    object TabItem3: TTabItem
+      WordWrap = False
+      Height = 49.000000000000000000
+      IsSelected = False
+      Position.X = 192.000000000000000000
+      StyleLookup = 'tabitembookmarks'
+      TabOrder = 2
+      Text = 'ListView'
+      Width = 96.000000000000000000
+      object ListView1: TListView
+        ItemAppearanceClassName = 'TListItemAppearance'
+        ItemEditAppearanceClassName = 'TListItemShowCheckAppearance'
+        HeaderAppearanceClassName = 'TListHeaderObjects'
+        FooterAppearanceClassName = 'TListHeaderObjects'
+        Align = alClient
+        Height = 470.000000000000000000
+        TabOrder = 0
+        Width = 384.000000000000000000
+        CanSwipeDelete = False
+        OnItemClick = ListView1ItemClick
+      end
+    end
+    object TabItem4: TTabItem
+      WordWrap = False
+      Enabled = False
+      Height = 49.000000000000000000
+      IsSelected = False
+      Position.X = 288.000000000000000000
+      StyleLookup = 'tabitemsearch'
+      TabOrder = 3
+      Text = 'Details'
+      Width = 96.000000000000000000
+      object DetailsListView: TListView
+        ItemAppearanceClassName = 'TListItemAppearance'
+        ItemEditAppearanceClassName = 'TListItemShowCheckAppearance'
+        HeaderAppearanceClassName = 'TListHeaderObjects'
+        FooterAppearanceClassName = 'TListHeaderObjects'
+        Align = alClient
+        Height = 470.000000000000000000
+        TabOrder = 0
+        Width = 384.000000000000000000
+        ItemAppearanceObjects.ItemObjects.Accessory.Visible = False
+        ItemAppearanceObjects.ItemEditObjects.Accessory.Visible = False
+        ItemAppearanceObjects.ItemEditObjects.GlyphButton.Visible = False
+        CanSwipeDelete = False
+      end
+    end
+  end
+  object RESTResponse: TRESTResponse
+    RootElement = 'value'
+    Left = 168
+    Top = 280
+  end
+  object RESTRequest: TRESTRequest
+    Client = RESTClient
+    Params = <>
+    Response = RESTResponse
+    OnAfterExecute = RESTRequestAfterExecute
+    Left = 248
+    Top = 280
+  end
+  object RESTClient: TRESTClient
+    Accept = 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    BaseURL = 'http://services.odata.org/Northwind/Northwind.svc/Customers'
+    Params = <>
+    HandleRedirects = True
+    Left = 96
+    Top = 280
+  end
+  object RESTResponseDataSetAdapter: TRESTResponseDataSetAdapter
+    Active = True
+    Dataset = ClientDataSet
+    FieldDefs = <
+      item
+        Name = 'CompanyName'
+        DataType = ftString
+        Size = 20
+      end>
+    Response = RESTResponse
+    OnBeforeOpenDataSet = RESTResponseDataSetAdapterBeforeOpenDataSet
+    Left = 96
+    Top = 344
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 168
+    Top = 392
+    object LinkControlToField1: TLinkControlToField
+      Category = 'Quick Bindings'
+      DataSource = RESTClient
+      FieldName = 'BaseURL'
+      Control = Edit1
+      Track = False
+    end
+    object LinkListControlToField1: TLinkListControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB2
+      FieldName = 'CompanyName'
+      Control = ListView1
+      FillExpressions = <>
+      AutoBufferCount = False
+      FillHeaderExpressions = <>
+      FillBreakGroups = <>
+    end
+    object LinkControlToPropertyRootElement: TLinkControlToProperty
+      Category = 'Quick Bindings'
+      Control = Edit2
+      Track = False
+      Component = RESTResponseDataSetAdapter
+      ComponentProperty = 'RootElement'
+    end
+  end
+  object ClientDataSet: TClientDataSet
+    Active = True
+    Aggregates = <>
+    FieldDefs = <
+      item
+        Name = 'CompanyName'
+        DataType = ftString
+        Size = 20
+      end>
+    IndexDefs = <>
+    Params = <>
+    StoreDefs = True
+    Left = 248
+    Top = 344
+    Data = {
+      3A0000009619E0BD0100000018000000010000000000030000003A000B436F6D
+      70616E794E616D6501004900000001000557494454480200020014000000}
+  end
+  object BindSourceDB2: TBindSourceDB
+    DataSet = ClientDataSet
+    ScopeMappings = <>
+    Left = 248
+    Top = 392
+  end
+end
